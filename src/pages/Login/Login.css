@@ -1,0 +1,28 @@
+.auth {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.auth__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth__error {
+  margin: -0.5rem 0 1rem;
+}
+
+.auth__switch {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  margin: 1rem 0 0;
+}
+
+.auth__switch a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-primary);
+}

@@ -1,0 +1,72 @@
+/* ── Payment ──────────────────────── */
+.payment__hint {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  margin: -0.5rem 0 1.25rem;
+}
+
+.payment__secure-note {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+}
+
+.payment__secure-note strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-ink);
+  margin-bottom: 0.25rem;
+}
+
+.payment__secure-note p {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.payment__address {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.payment__address strong {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-bottom: 0.5rem;
+}
+
+.payment__address p {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.checkout__submit:disabled {
+  background: #cbd0e0;
+  cursor: not-allowed;
+}
+
+.payment__back {
+  display: block;
+  text-align: center;
+  margin-top: 0.85rem;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.payment__back:hover {
+  color: var(--color-primary);
+}

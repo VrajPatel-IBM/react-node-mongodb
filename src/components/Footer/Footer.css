@@ -1,0 +1,138 @@
+/* ── Footer ────────────────────────── */
+.footer {
+  margin-top: 0;
+  background: var(--color-ink);
+  color: #fff;
+  border-top: none;
+}
+
+/* Perks bar */
+.footer__perks {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+
+.footer__perks > div {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #fff;
+}
+
+.footer__perks small {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: #a5a3c4;
+  margin-top: 0.25rem;
+}
+
+/* Newsletter */
+.footer__newsletter {
+  background: rgba(0, 0, 0, 0.15);
+  color: #fff;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer__newsletter h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.footer__newsletter-form {
+  display: flex;
+}
+
+.footer__newsletter-form input {
+  padding: 0.65rem 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-right: none;
+  color: #fff;
+  font-size: 0.85rem;
+  min-width: 240px;
+  outline: none;
+  border-radius: 999px 0 0 999px;
+}
+
+.footer__newsletter-form input::placeholder {
+  color: #8a87ad;
+}
+
+.footer__newsletter-form input:focus {
+  border-color: var(--color-accent);
+}
+
+.footer__newsletter-form button {
+  padding: 0.65rem 1.3rem;
+  background: var(--color-primary);
+  color: #fff;
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 0 999px 999px 0;
+  transition: background 0.15s;
+}
+
+.footer__newsletter-form button:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Columns */
+.footer__columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2.5rem 2rem;
+}
+
+.footer__columns > div {
+  flex: 1;
+  min-width: 150px;
+}
+
+.footer__columns h4 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.footer__columns p {
+  margin: 0.4rem 0;
+  color: #a5a3c4;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.footer__columns p:hover {
+  color: #fff;
+}
+
+/* Bottom bar */
+.footer::after {
+  content: '© 2026 LearnHub. All Rights Reserved.';
+  display: block;
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: #6b6890;
+  padding: 1rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}

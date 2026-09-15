@@ -1,0 +1,82 @@
+/* ── Enroll Steps ───────────────────── */
+.enroll-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.enroll-steps__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.enroll-steps__step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.enroll-steps__step a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.enroll-steps__num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.enroll-steps__step.done {
+  color: var(--color-ink);
+}
+
+.enroll-steps__step.done .enroll-steps__num {
+  background: #fff;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.enroll-steps__step.active {
+  color: var(--color-ink);
+}
+
+.enroll-steps__step.active .enroll-steps__num {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.enroll-steps__line {
+  width: 50px;
+  height: 1px;
+  background: var(--color-border);
+}
+
+@media (max-width: 600px) {
+  .enroll-steps__line {
+    width: 24px;
+  }
+
+  .enroll-steps__step span:not(.enroll-steps__num) {
+    display: none;
+  }
+}
