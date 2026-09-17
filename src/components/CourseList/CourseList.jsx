@@ -1,14 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CourseCard from '../CourseCard/CourseCard';
+import Pagination from '../Pagination/Pagination';
 import {
   fetchCoursesList,
   selectCourses,
   selectCoursesTotal,
   selectCoursesLoading,
-  selectCoursesLoadingMore,
   selectCoursesError,
-  selectCoursesMoreError,
 } from '../../store/courses/coursesSlice';
 import './CourseList.css';
 
@@ -39,47 +38,15 @@ function CourseList({ category }) {
   const courses = useSelector(selectCourses);
   const total = useSelector(selectCoursesTotal);
   const loading = useSelector(selectCoursesLoading);
-  const loadingMore = useSelector(selectCoursesLoadingMore);
   const error = useSelector(selectCoursesError);
-  const moreError = useSelector(selectCoursesMoreError);
 
-  const sentinelRef = useRef(null);
-  const [triggerMore, setTriggerMore] = useState(false);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    dispatch(fetchCoursesList(category, 0, PAGE_SIZE));
-  }, [category, dispatch]);
+    dispatch(fetchCoursesList(category, (page - 1) * PAGE_SIZE, PAGE_SIZE));
+  }, [category, page, dispatch]);
 
-  const hasMore = total === null || courses.length < total;
-
-  useEffect(() => {
-    if (loading || error || moreError || loadingMore || !hasMore) return;
-
-    const sentinel = sentinelRef.current;
-    if (!sentinel) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setTriggerMore(true);
-        }
-      },
-      { rootMargin: '300px' }
-    );
-
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, [loading, error, moreError, loadingMore, hasMore]);
-
-  useEffect(() => {
-    if (!triggerMore) return;
-    setTriggerMore(false);
-    dispatch(fetchCoursesList(category, courses.length, PAGE_SIZE));
-  }, [triggerMore, category, courses.length, dispatch]);
-
-  const handleRetryLoadMore = () => {
-    dispatch(fetchCoursesList(category, courses.length, PAGE_SIZE));
-  };
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   return (
     <section className="course-list">
@@ -94,19 +61,12 @@ function CourseList({ category }) {
         ))}
       </div>
 
-      {!loading && !error && !moreError && hasMore && <div ref={sentinelRef} className="course-list__sentinel" />}
-      {loadingMore && <p className="course-list__loading-more">Loading more courses...</p>}
-      {moreError && (
-        <div className="course-list__more-error">
-          <p>{moreError}</p>
-          <button type="button" onClick={handleRetryLoadMore}>Retry</button>
-        </div>
-      )}
-      {!loading && !error && !hasMore && courses.length > 0 && (
-        <p className="course-list__end">You've seen all courses.</p>
-      )}
       {!loading && !error && courses.length === 0 && (
         <p className="course-list__end">No courses found in this category.</p>
+      )}
+
+      {!loading && !error && total > 0 && (
+        <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
       )}
     </section>
   );

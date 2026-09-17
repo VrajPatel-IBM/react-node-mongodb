@@ -2,11 +2,8 @@
 
 import {
   COURSES_FETCH_START,
-  COURSES_FETCH_MORE_START,
   COURSES_FETCH_SUCCESS,
-  COURSES_FETCH_MORE_SUCCESS,
   COURSES_FETCH_FAIL,
-  COURSES_FETCH_MORE_FAIL,
   COURSES_SET_CATEGORY,
   COURSES_SET_SEARCH,
   CATEGORIES_SET,
@@ -23,9 +20,7 @@ export const coursesInitialState = {
   items: [],
   total: 0,
   loading: false,
-  loadingMore: false,
   error: null,
-  moreError: null,
   category: null,
   searchQuery: '',
   categories: [],
@@ -47,9 +42,6 @@ export function coursesReducer(state = coursesInitialState, action) {
     case COURSES_FETCH_START:
       return { ...state, loading: true, error: null, items: [] };
 
-    case COURSES_FETCH_MORE_START:
-      return { ...state, loadingMore: true, moreError: null };
-
     case COURSES_FETCH_SUCCESS:
       return {
         ...state,
@@ -59,20 +51,8 @@ export function coursesReducer(state = coursesInitialState, action) {
         error: null,
       };
 
-    case COURSES_FETCH_MORE_SUCCESS:
-      return {
-        ...state,
-        loadingMore: false,
-        items: [...state.items, ...(action.payload.courses ?? [])],
-        total: action.payload.total ?? state.total,
-        moreError: null,
-      };
-
     case COURSES_FETCH_FAIL:
       return { ...state, loading: false, error: action.payload };
-
-    case COURSES_FETCH_MORE_FAIL:
-      return { ...state, loadingMore: false, moreError: action.payload };
 
     case COURSES_SET_CATEGORY:
       return { ...state, category: action.payload };

@@ -2,11 +2,8 @@
 
 import {
   COURSES_FETCH_START,
-  COURSES_FETCH_MORE_START,
   COURSES_FETCH_SUCCESS,
-  COURSES_FETCH_MORE_SUCCESS,
   COURSES_FETCH_FAIL,
-  COURSES_FETCH_MORE_FAIL,
   COURSES_SET_CATEGORY,
   COURSES_SET_SEARCH,
   CATEGORIES_SET,
@@ -32,20 +29,13 @@ export const setCategories = (categories) => ({ type: CATEGORIES_SET, payload: c
 export const setCustomCourses = (courses) => ({ type: CUSTOM_COURSES_SET, payload: courses });
 
 export const fetchCoursesList = (category = null, skip = 0, limit = 12) => async (dispatch) => {
-  const append = skip > 0;
-  dispatch({ type: append ? COURSES_FETCH_MORE_START : COURSES_FETCH_START });
+  dispatch({ type: COURSES_FETCH_START });
   try {
     const data = await apiFetchCourses({ category, skip, limit });
-    dispatch({
-      type: append ? COURSES_FETCH_MORE_SUCCESS : COURSES_FETCH_SUCCESS,
-      payload: data,
-    });
+    dispatch({ type: COURSES_FETCH_SUCCESS, payload: data });
     return data;
   } catch (err) {
-    dispatch({
-      type: append ? COURSES_FETCH_MORE_FAIL : COURSES_FETCH_FAIL,
-      payload: err.message || 'Unable to load courses',
-    });
+    dispatch({ type: COURSES_FETCH_FAIL, payload: err.message || 'Unable to load courses' });
     throw err;
   }
 };

@@ -61,7 +61,7 @@ function Home() {
     <main>
       <NavCategories selected={category} onSelect={handleSelectCategory} />
       <Banner slides={BANNER_SLIDES} />
-      <CourseList category={category} />
+      <CourseList key={category ?? 'all'} category={category} />
     </main>
   );
 }

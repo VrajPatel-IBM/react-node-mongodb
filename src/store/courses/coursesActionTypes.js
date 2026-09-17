@@ -1,11 +1,8 @@
 // Action type string constants for the courses feature
 
 export const COURSES_FETCH_START   = 'courses/fetchStart';
-export const COURSES_FETCH_MORE_START = 'courses/fetchMoreStart';
 export const COURSES_FETCH_SUCCESS = 'courses/fetchSuccess';
-export const COURSES_FETCH_MORE_SUCCESS = 'courses/fetchMoreSuccess';
 export const COURSES_FETCH_FAIL    = 'courses/fetchFail';
-export const COURSES_FETCH_MORE_FAIL = 'courses/fetchMoreFail';
 
 export const COURSES_SET_CATEGORY  = 'courses/setCategory';
 export const COURSES_SET_SEARCH    = 'courses/setSearchQuery';

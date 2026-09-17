@@ -3,9 +3,7 @@
 export const selectCourses = (state) => state.courses.items;
 export const selectCoursesTotal = (state) => state.courses.total;
 export const selectCoursesLoading = (state) => state.courses.loading;
-export const selectCoursesLoadingMore = (state) => state.courses.loadingMore;
 export const selectCoursesError = (state) => state.courses.error;
-export const selectCoursesMoreError = (state) => state.courses.moreError;
 export const selectCategory = (state) => state.courses.category;
 export const selectSearchQuery = (state) => state.courses.searchQuery;
 export const selectCategories = (state) => state.courses.categories;
